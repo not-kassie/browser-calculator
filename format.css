@@ -25,15 +25,12 @@ button:hover {
     width: 98%;
     height: 25%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3em;
     background-color: white;
     margin: 1%; 
     border-radius: 3px;
     border: 2px solid black;
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
 }
 
 .buttons{
@@ -151,7 +148,9 @@ button:hover {
 }
 
 .info{
-    width: 100%;
+    width: 99%;
     height: 50%;
-    margin: 0.2%;
+    font-size: 3em;
+    text-align: right;
+    margin: 0%;
 }
