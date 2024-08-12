@@ -1,19 +1,32 @@
 //set up variables 
 
 let number = 0; 
-let operator = 0;
+let operator = null;
 let secondNumber = 0; 
+plzResetScreen = false;
+const bottomScreen = document.getElementById('bottomDisplay');
+const numberButtons = document.querySelectorAll('[number]');
+const operatorButtons = document.querySelectorAll('[operator]');
 
 //check for operator so we can use a switch statement in operate function
 if(document.getElementById('add').clicked == true){
-    operator = '1';
+    operator = '+';
 } if (document.getElementById('sub').clicked == true){
-    operator = '2';
+    operator = '-';
 } if (document.getElementById('multiply').clicked == true){
-    operator = '3';
+    operator = 'x';
 } if (document.getElementById('divide').clicked == true){
-    operator = '4';
+    operator = '÷';
 }
+
+//set up buttons! 
+numberButtons.forEach((button) => 
+    button.addEventListener('click', () => appendNumber(button.textContent))
+)
+operatorButtons.forEach((button) =>
+    button.addEventListener('click', () => 
+        appendNumber(button.textContent))
+)
 
 //set up functions 
 function addition(firstNumber, secondNumber) {
@@ -37,15 +50,26 @@ function division(firstNumber, secondNumber) {
 
 function operate(firstNumber, operator, secondNumber) {
     switch (operator) {
-        case '1':
+        case '+':
             return addition(firstNumber, secondNumber);
-        case '2':
+        case '-':
             return subtraction(firstNumber, secondNumber);
-        case '3':
+        case 'x':
             return multiplication(firstNumber, secondNumber);
-        case '4':
+        case '÷':
             return division(firstNumber, secondNumber);
         default:
             return "Error: Invalid operator.";
     }
+}
+
+function appendNumber(number) {
+    if (bottomScreen.textContent === '0' || plzResetScreen)
+        resetScreen();
+    bottomScreen.textContent += number;
+}
+
+function resetScreen() {
+    bottomScreen.textContent = ''; 
+    plzResetScreen = false;
 }
